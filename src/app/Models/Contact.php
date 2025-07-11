@@ -21,13 +21,49 @@ class Contact extends Model
         'detail',
     ];
 
-    public function contact()
+    public function category()
     {
       return $this->belongsTo('App\Models\Category','category_id','id');
     }
 
     public function getGenderAttribute($value)
     {
-        return $value === 1 ? '男性' : '女性' ;
+        if($value == 1){
+            return $value='男性';
+        }elseif($value == 2){
+            return $value='女性';
+        }else{
+            return $value='その他';
+        }
     }
+
+    // 検索に必要
+    public function scopeEmailOrNameSearch($query, $search)
+ {
+  if (!empty($search)) {
+    $query->where('email', 'like', '%' . $search . '%')
+    ->orWhere('first_name', 'like', '%' . $search . '%')->orWhere('last_name','like','%'.$search.'%');
+  }
+ }
+
+public function scopeGenderSearch($query, $gender)
+ {
+  if (!empty($gender)) {
+    $query->where('gender', $gender);
+  }
+ }
+
+  public function scopeCategorySearch($query, $category_id)
+  {
+    if (!empty($category_id)) {
+      $query->where('category_id', $category_id);
+    }
+  }
+  
+  public function scopeDateSearch($query, $date)
+  {
+    if (!empty($date)) {
+      $query->whereDate('created_at', $date);
+    }
+  }
 }
