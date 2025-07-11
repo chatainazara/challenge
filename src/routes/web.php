@@ -24,4 +24,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [AuthController::class, 'admin']);
 });
 
-Route::get('/modal', [ModalController::class, 'modal']);
+Route::get('/admin',[AdminController::class, 'search']);
+Route::post('/admin',[AdminController::class, 'search']);

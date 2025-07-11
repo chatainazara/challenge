@@ -7,19 +7,36 @@
 @section('content')
 <h2>Admin</h2>
 
-<form>
-  <input />
-  <select><option></option></select>
-  <select><option></option></select>
-  <input type="date" />
+<!-- 検索画面 -->
+
+<form action="/admin" method="post">
+  @csrf
+  <input type="text" name="search" placeholder="名前やメールアドレスを入力してください" />
+  <select name="gender">
+    <option value=""></option>
+    <option value="1">男性</option>
+    <option value="2">女性</option>
+    <option value="3">その他</option>
+  </select>
+  <select name="category_id" >
+    <option value=""></option>
+    @foreach($categories as $category)
+    <option value="{{$category['id']}}">
+      {{$category['content']}}
+    </option>
+    @endforeach
+  </select>
+  <input type="date" name="date" value="date"/>
   <button>検索</button>
   <button>リセット</button>
 </form>
 
+
 <div>
-{{ $contacts->links() }}
+{{ $contacts_page->links() }}
 </div>
 
+<!-- 一覧 -->
 <div class="attendance__content">
   <div class="attendance__panel">
    
@@ -36,10 +53,10 @@
 
       @foreach($contacts as $contact)
       <tr class="attendance-table__row">
-        <td class="attendance-table__item">{{$contact['first_name']}}{{$contact['last_name']}}</td>
+        <td class="attendance-table__item">{{$contact['last_name']}}{{$contact['first_name']}}</td>
         <td class="attendance-table__item">{{$contact['gender']}}</td>
         <td class="attendance-table__item">{{$contact['email']}}</td>
-        <td class="attendance-table__item">{{$contact['detail']}}</td>
+        <td class="attendance-table__item">{{$contact['category']['content']}}</td>
         <td class="attendance-table__item">
 
       <!-- モーダルを開くボタン・リンク -->
