@@ -6,7 +6,6 @@
 
 @section('link')
     <a class="login__button-submit" href="/login">Login</a>
-
 @endsection
 
 @section('content')

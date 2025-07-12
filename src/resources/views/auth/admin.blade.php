@@ -4,11 +4,13 @@
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 @endsection
 
+
+@if (Auth::check())
+
 @section('content')
 <h2>Admin</h2>
 
 <!-- 検索画面 -->
-
 <form action="/admin" method="post">
   @csrf
   <input type="text" name="search" placeholder="名前やメールアドレスを入力してください" />
@@ -31,17 +33,15 @@
   <button name="reset">リセット</button>
 </form>
 
-
-<div>
-{{ $contacts_page->links() }}
-</div>
-
 <form action="/csv-download" method="get">
 @csrf
   <button type="submit">エクスポート</button>
 </form>
 
 
+<div>
+{{ $contacts -> links() }}
+</div>
 
 <!-- 一覧 -->
 <div class="attendance__content">
@@ -141,7 +141,7 @@
   </div>
 </div>
 @endsection
-
+@endif
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Contact;
 use App\Http\Controllers\Controller;
+use Illuminate\Pagination\Paginator;
 
 class AdminController extends Controller
 {
@@ -13,19 +14,15 @@ class AdminController extends Controller
     // 検索とリセット
     public function search(Request $request)
     {
-      // $s=$request->all();
-      // dd($s);
+      
       if($request->has('reset')){
         return redirect('/admin');
+
       }else{
-      $contacts_page=Contact::simplePaginate(7);
-      
+      $searches = Contact::with('category')->EmailOrNameSearch($request->search)->GenderSearch($request->gender)->CategorySearch($request->category_id)->DateSearch($request->date)->get();
       $categories = Category::all();
-      
-      $contacts = Contact::with('category')->EmailOrNameSearch($request->search)->GenderSearch($request->gender)->CategorySearch($request->category_id)->DateSearch($request->date)->get();
-      
+      $contacts = $searches -> paginate(5);
       return view('auth.admin',[
-        'contacts_page' => $contacts_page,
         'contacts' => $contacts,
         'categories' => $categories,
       ]);
@@ -40,3 +37,5 @@ class AdminController extends Controller
       return redirect('/admin');
     }
 }
+
+

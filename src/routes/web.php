@@ -25,7 +25,7 @@ use App\Http\Controllers\ThanksController;
 // });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [AuthController::class, 'admin']);
+    Route::get('/admin', [AdminController::class, 'admin']);
 });
 
 Route::get('/admin',[AdminController::class, 'search']);
