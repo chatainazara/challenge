@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ModalController;
+use App\Http\Controllers\CsvDownloadController;
+use App\Http\Controllers\ContactformController;
+use App\Http\Controllers\ConfirmController;
+use App\Http\Controllers\ThanksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +30,10 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/admin',[AdminController::class, 'search']);
 Route::post('/admin',[AdminController::class, 'search']);
+Route::get('/csv-download', [CsvDownloadController::class, 'downloadCsv']);
+
+Route::post('/remove',[AdminController::class, 'remove']);
+
+Route::get('/',[ContactformController::class, 'contactform']);
+Route::post('/confirm',[ConfirmController::class, 'confirm']);
+Route::post('/thanks',[ThanksController::class, 'thanksOrfix']);
