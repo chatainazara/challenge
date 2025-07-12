@@ -13,31 +13,39 @@
 <!-- 検索画面 -->
 <form action="/admin" method="post">
   @csrf
-  <input type="text" name="search" placeholder="名前やメールアドレスを入力してください" />
+  <input type="text" name="search" placeholder="名前やメールアドレスを入力してください" value="{{$searchitem['search']}}"/>
   <select name="gender">
-    <option value="">性別</option>
-    <option value="1">男性</option>
-    <option value="2">女性</option>
-    <option value="3">その他</option>
+    <option value=""  {{$searchitem['find'] == '' ? 'selected' :''}} >性別</option>
+    <option value=""  {{$searchitem['find'] == '検索' ? 'selected' :''}} >全て</option>
+    <option value="1" {{$searchitem['gender'] == '1' ? 'selected' :''}} >男性</option>
+    <option value="2" {{$searchitem['gender'] == '2' ? 'selected' :''}} >女性</option>
+    <option value="3" {{$searchitem['gender'] == '3' ? 'selected' :''}} >その他</option>
   </select>
-  <select name="category_id" >
-    <option value="">お問い合わせの種類</option>
+  <select name="category_id">
+    @if(old('category_id')=="")
+      <option value="">選択してください</option>
     @foreach($categories as $category)
-    <option value="{{$category['id']}}">
-      {{$category['content']}}
-    </option>
+      <option value="{{ $category['id'] }}" @if($searchitem['category_id']  == $category['id']) selected @endif>{{ $category['content'] }}</option>
     @endforeach
+    @else
+    @foreach($categories as $category)
+      <option value="{{ $category['id'] }}" @if($searchitem['category_id'] == $category['id']) selected @endif>{{ $category['content'] }}</option>
+    @endforeach
+    @endif
   </select>
-  <input type="date" name="date" value="date"/>
-  <button name="find">検索</button>
-  <button name="reset">リセット</button>
+  <input type="date" name="date" value="{{$searchitem['date'] }}"/>
+  <input type="submit" name="find" value="検索"/>
+  <input type="submit" name="reset" value="リセット"/>
 </form>
 
-<form action="/csv-download" method="get">
+<form action="/csv-download" method="post">
 @csrf
-  <button type="submit">エクスポート</button>
+  <input type="hidden" name="search" value="{{$searchitem['search']}}" />
+  <input type="hidden" name="gender" value="{{$searchitem['gender']}}" />
+  <input type="hidden" name="category_id" value="{{$searchitem['category_id']}}" />
+  <input type="hidden" name="date" value="{{$searchitem['date']}}" />
+  <button>エクスポート</button>
 </form>
-
 
 <div>
 {{ $contacts -> links() }}
