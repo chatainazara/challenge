@@ -30,7 +30,9 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/admin',[AdminController::class, 'search']);
 Route::post('/admin',[AdminController::class, 'search']);
+
 Route::get('/csv-download', [CsvDownloadController::class, 'downloadCsv']);
+Route::post('/csv-download', [CsvDownloadController::class, 'downloadCsv']);
 
 Route::post('/remove',[AdminController::class, 'remove']);
 

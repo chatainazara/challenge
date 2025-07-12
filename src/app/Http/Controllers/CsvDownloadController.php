@@ -7,12 +7,16 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Contact;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use App\Http\Controllers\Controller;
+use Illuminate\Pagination\Paginator;
 
 class CsvDownloadController extends Controller
 {
-    public function downloadCsv()
+    
+    public function downloadCsv(Request $request)
     {
-        $contacts = Contact::all();
+        $contacts = Contact::where('id','>',0 )->EmailOrNameSearch($request->search)->GenderSearch($request->gender)->CategorySearch($request->category_id)->DateSearch($request->date)->get();
+
         $csvHeader = [
             'id',
             'category_id',
@@ -27,8 +31,8 @@ class CsvDownloadController extends Controller
             'created_at',
             'updated_at',
         ];
-        $csvData = $contacts->toArray();
 
+        $csvData = $contacts -> toArray();
         $response = new StreamedResponse(function () use ($csvHeader, $csvData) {
             $handle = fopen('php://output', 'w');
             fputcsv($handle, $csvHeader);
