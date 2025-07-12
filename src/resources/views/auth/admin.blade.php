@@ -13,13 +13,13 @@
   @csrf
   <input type="text" name="search" placeholder="名前やメールアドレスを入力してください" />
   <select name="gender">
-    <option value=""></option>
+    <option value="">性別</option>
     <option value="1">男性</option>
     <option value="2">女性</option>
     <option value="3">その他</option>
   </select>
   <select name="category_id" >
-    <option value=""></option>
+    <option value="">お問い合わせの種類</option>
     @foreach($categories as $category)
     <option value="{{$category['id']}}">
       {{$category['content']}}
@@ -27,14 +27,21 @@
     @endforeach
   </select>
   <input type="date" name="date" value="date"/>
-  <button>検索</button>
-  <button>リセット</button>
+  <button name="find">検索</button>
+  <button name="reset">リセット</button>
 </form>
 
 
 <div>
 {{ $contacts_page->links() }}
 </div>
+
+<form action="/csv-download" method="get">
+@csrf
+  <button type="submit">エクスポート</button>
+</form>
+
+
 
 <!-- 一覧 -->
 <div class="attendance__content">
@@ -76,18 +83,50 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
                 <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel"></h4>
-                    <ul>
-                      <li>{{$contact['first_name']}}</li>
-                      <li>{{$contact['gender']}}</li>
-                      <li>{{$contact['email']}}</li>
-                      <li>{{$contact['detail']}}</li>
-                    </ul>
+                    <table>
+                    <tr>
+                      <th>お名前</th>
+                      <td>{{$contact['last_name']}}{{$contact['first_name']}}</td>
+                    </tr>
+                    <tr>
+                      <th>性別</th>
+                      <td>{{$contact['gender']}}</td>
+                    </tr>
+                    <tr>
+                      <th>メールアドレス</th>
+                      <td>{{$contact['email']}}</td>
+                    </tr>
+                    <tr>
+                      <th>電話番号</th>
+                      <td>{{$contact['tel']}}</td>
+                    </tr>
+                    <tr>
+                      <th>住所</th>
+                      <td>{{$contact['address']}}</td>
+                    </tr>
+                    <tr>
+                      <th>建物名</th>
+                      <td>{{$contact['building']}}</td>
+                    </tr>
+                    <tr>
+                      <th>お問い合わせの種類</th>
+                      <td>{{$contact['category']['content']}}</td>
+                    </tr>
+                    <tr>
+                      <th>お問い合わせ内容</th>
+                      <td>{{$contact['detail']}}</td>
+                    </tr>
+                </table>
                 </div>
                 <div class="modal-body">
                 データを削除しますか？
                 </div>
+                
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger">削除</button>
+                <form action="/remove?id={{$contact->id}}" method="post">
+                  @csrf
+                    <button class="btn btn-danger">削除</button>
+                </form>
                 </div>
             </div>
         </div>
