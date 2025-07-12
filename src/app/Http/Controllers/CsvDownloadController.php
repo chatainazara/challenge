@@ -15,7 +15,7 @@ class CsvDownloadController extends Controller
         $contacts = Contact::all();
         $csvHeader = [
             'id',
-            'category_id'
+            'category_id',
             'first_name',
             'last_name',
             'gender',
