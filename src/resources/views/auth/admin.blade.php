@@ -8,7 +8,8 @@
 @if (Auth::check())
 
 @section('content')
-<h2>Admin</h2>
+
+<h2 class=".header_logo">Admin</h2>
 
 <!-- 検索画面 -->
 <form action="/admin" method="post">
@@ -68,7 +69,7 @@
 
       @foreach($contacts as $contact)
       <tr class="attendance-table__row">
-        <td class="attendance-table__item">{{$contact['last_name']}}{{$contact['first_name']}}</td>
+        <td class="attendance-table__item">{{$contact['last_name']}} {{$contact['first_name']}}</td>
         <td class="attendance-table__item">{{$contact['gender']}}</td>
         <td class="attendance-table__item">{{$contact['email']}}</td>
         <td class="attendance-table__item">{{$contact['category']['content']}}</td>
@@ -94,7 +95,7 @@
                     <table>
                     <tr>
                       <th>お名前</th>
-                      <td>{{$contact['last_name']}}{{$contact['first_name']}}</td>
+                      <td>{{$contact['last_name']}} {{$contact['first_name']}}</td>
                     </tr>
                     <tr>
                       <th>性別</th>

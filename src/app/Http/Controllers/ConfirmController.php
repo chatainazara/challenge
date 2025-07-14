@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Contact;
+use App\Http\Requests\ContactRequest;
 
 class ConfirmController extends Controller
 {
 
-    public function confirm(Request $request) {
+    public function confirm(ContactRequest $request) {
         $contact=$request -> all();
         $gender = $contact['gender'];
         if($gender == 1){

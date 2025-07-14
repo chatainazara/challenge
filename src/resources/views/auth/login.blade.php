@@ -13,7 +13,7 @@
   <div class="login-form__heading">
     <h2>Login</h2>
   </div>
-  <form class="form" action="/login" method="post">
+  <form class="form" action="/login" method="post" novalidate>
   @csrf
     <div class="form__group">
       <div class="form__group-title">
@@ -24,9 +24,11 @@
           <input type="email" name="email" value="{{ old('email') }}" />
         </div>
         <div class="form__error">
-          @error('email')
-          {{ $message }}
-          @enderror
+        @if($errors->has('email'))
+        <div class="form__error">
+          <div>{{$errors->first('email')}}</div>
+        </div>
+        @endif
         </div>
       </div>
     </div>
@@ -39,9 +41,11 @@
           <input type="password" name="password" />
         </div>
         <div class="form__error">
-          @error('password')
-          {{ $message }}
-          @enderror
+        @if($errors->has('password'))
+        <div class="form__error">
+          <div>{{$errors->first('password')}}</div>
+        </div>
+        @endif
         </div>
       </div>
     </div>

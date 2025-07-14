@@ -26,7 +26,7 @@
 <table class="attendance-table__inner">
   <tr>
     <th class="attendance-table__header">名前</th>
-    <td class="attendance-table__item">{{$contact['last_name']}}{{$contact['first_name']}}</td>
+    <td class="attendance-table__item">{{$contact['last_name']}}  {{$contact['first_name']}}</td>
   </tr>
   <tr>
     <th class="attendance-table__header">性別</th>
