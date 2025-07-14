@@ -13,7 +13,7 @@
   <div class="register-form__heading">
     <h2>Register</h2>
   </div>
-  <form class="form" action="/register" method="post">
+  <form class="form" action="/register" method="post" novalidate>
   @csrf
     <div class="form__group">
       <div class="form__group-title">
@@ -23,11 +23,11 @@
         <div class="form__input--text">
           <input type="text" name="name" value="{{ old('name') }}" />
         </div>
+        @if($errors->has('name'))
         <div class="form__error">
-          @error('name')
-          {{ $message }}
-          @enderror
+          <div>{{$errors->first('name')}}</div>
         </div>
+        @endif
       </div>
     </div>
     <div class="form__group">
@@ -39,9 +39,11 @@
           <input type="email" name="email" value="{{ old('email') }}" />
         </div>
         <div class="form__error">
-          @error('email')
-          {{ $message }}
-          @enderror
+        @if($errors->has('email'))
+        <div class="form__error">
+          <div>{{$errors->first('email')}}</div>
+        </div>
+        @endif
         </div>
       </div>
     </div>
@@ -54,10 +56,11 @@
           <input type="password" name="password" />
         </div>
         <div class="form__error">
-          @error('password')
-          {{ $message }}
-          @enderror
+        @if($errors->has('password'))
+        <div class="form__error">
+          <div>{{$errors->first('password')}}</div>
         </div>
+        @endif
       </div>
     </div>
     <!-- <div class="form__group">

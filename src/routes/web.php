@@ -8,6 +8,11 @@ use App\Http\Controllers\CsvDownloadController;
 use App\Http\Controllers\ContactformController;
 use App\Http\Controllers\ConfirmController;
 use App\Http\Controllers\ThanksController;
+use App\Actions\Fortify\CreateNewUser;
+use App\Http\Requests\RegisterRequest;
+use App\Http\Middleware\RegistMiddleware;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Middleware\RedirectIfAuthenticated;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +32,8 @@ use App\Http\Controllers\ThanksController;
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'admin']);
 });
+
+// Route::post('/register',[ThanksController::class, 'thanksOrfix']);php artisan make:middleware FirstMiddleware
 
 Route::get('/admin',[AdminController::class, 'search']);
 Route::post('/admin',[AdminController::class, 'search']);
