@@ -5,14 +5,17 @@
 @endsection
 
 @section('link')
-    <a class="register__button-submit" href="/register">register</a>
+<div class="header__link">
+  <a class="header-nav__button" href="/register">Register</a>
+</div>
+@endsection
+
+@section('pagetitle')
+    <h2 class="header__pagetitle2">Login</h2>
 @endsection
 
 @section('content')
-<div class="login-form__content">
-  <div class="login-form__heading">
-    <h2>Login</h2>
-  </div>
+<div class="background">
   <form class="form" action="/login" method="post" novalidate>
   @csrf
     <div class="form__group">
@@ -21,7 +24,7 @@
       </div>
       <div class="form__group-content">
         <div class="form__input--text">
-          <input type="email" name="email" value="{{ old('email') }}" />
+          <input type="email" name="email" value="{{ old('email') }}" placeholder="例：test@example.com"/>
         </div>
         <div class="form__error">
         @if($errors->has('email'))
@@ -38,7 +41,7 @@
       </div>
       <div class="form__group-content">
         <div class="form__input--text">
-          <input type="password" name="password" />
+          <input type="password" name="password" placeholder="例：coachtech1106"/>
         </div>
         <div class="form__error">
         @if($errors->has('password'))
