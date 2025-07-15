@@ -1,6 +1,4 @@
 # challenge
-
-
 お問い合わせフォーム
 
 環境構築
@@ -22,8 +20,5 @@ Laravel環境構築
  Laravel v8.83.29
  MySQL  8.0.26
 
-
-
-
-
-<img width="150" src="img.challenge.drawio.svg">
+ER図
+[<img width="150" src="img.challenge.drawio.svg">](https://github.com/chatainazara/challenge/issues/9#issue-3230781263)
