@@ -4,9 +4,11 @@
 <link rel="stylesheet" href="{{ asset('css/confirm.css') }}">
 @endsection
 
-@section('content')
-<h2>Confirm</h2>
+@section('pagetitle')
+<h2 class="header__pagetitle">Confirm</h2>
+@endsection
 
+@section('content')
 <!-- 表部分 -->
 <form action="/thanks" method="post">
   @csrf
@@ -24,40 +26,42 @@
   <input type="hidden" name="detail" value="{{$contact['detail']}}" />
 
 <table class="attendance-table__inner">
-  <tr>
+  <tr class="attendance-table__row">
     <th class="attendance-table__header">名前</th>
     <td class="attendance-table__item">{{$contact['last_name']}}  {{$contact['first_name']}}</td>
   </tr>
-  <tr>
+  <tr class="attendance-table__row">
     <th class="attendance-table__header">性別</th>
     <td class="attendance-table__item">{{$gender_name}}</td>
   </tr>
-  <tr>
+  <tr class="attendance-table__row">
     <th class="attendance-table__header">メールアドレス</th>
     <td class="attendance-table__item">{{$contact['email']}}</td>
   </tr>
-  <tr>
+  <tr class="attendance-table__row">
     <th class="attendance-table__header">電話番号</th>
     <td class="attendance-table__item">{{$contact['tel1']}}-{{$contact['tel2']}}-{{$contact['tel3']}}</td>
   </tr>
-  <tr>
+  <tr class="attendance-table__row">
     <th class="attendance-table__header">住所</th>
     <td class="attendance-table__item">{{$contact['address']}}</td>
   </tr>
-  <tr>
+  <tr class="attendance-table__row">
     <th class="attendance-table__header">建物名</th>
     <td class="attendance-table__item">{{$contact['building']}}</td>
   </tr>
-  <tr>
+  <tr class="attendance-table__row">
     <th class="attendance-table__header">お問い合わせの種類</th>
     <td class="attendance-table__item">{{$category['content']}}</td>
   </tr>
-  <tr>
-    <th class="attendance-table__header">お問い合わせの詳細</th>
+  <tr class="attendance-table__row">
+    <th class="attendance-table__header">お問い合わせ内容</th>
     <td class="attendance-table__item">{{$contact['detail']}}</td>
   </tr>
 </table>
-<button type="submit" name="submit">送信</button>
-<button type="submit" name="fix">修正</button>
+<div class="button">
+<button class="submit-button" name="submit">送信</button>
+<button class="fix-button" type="submit" name="fix">修正</button>
+</div>
 </form>
 @endsection

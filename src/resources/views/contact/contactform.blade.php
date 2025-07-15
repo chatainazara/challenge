@@ -4,34 +4,36 @@
 <link rel="stylesheet" href="{{ asset('css/contactform.css') }}">
 @endsection
 
-@section('content')
-<h2>Contact</h2>
+@section('pagetitle')
+<h2 class="header__pagetitle">Contact</h2>
+@endsection
 
-                    <form action="/confirm" method="post">
+@section('content')
+                    <form class="form" action="/confirm" method="post">
                     @csrf
-                    <table>
-                    <tr>
-                      <th>お名前<strong>※</strong></th>
-                      <td>
-                      <input class="" type="text" name="last_name" value="{{ old('last_name') }}" placeholder="例：山田"/>
+                    <table class="form-table">
+                    <tr class="form-table__row">
+                      <th class="form-table__title">お名前<strong>※</strong></th>
+                      <td class="form-table__content">
+                      <input class="form-table__content-lastname" type="text" name="last_name" value="{{ old('last_name') }}" placeholder="例：山田"/>
                       @if($errors->has('last_name'))
                       <div class="form__error">
                       <div>{{$errors->first('last_name')}}</div>
                       </div>
                       @endif
-                      <input class="" type="text" name="first_name" value="{{ old('first_name') }}"placeholder="例：太郎"/>
+                      <input class="form-table__content-firstname" type="text" name="first_name" value="{{ old('first_name') }}"placeholder="例：太郎"/>
                       @if($errors->has('first_name'))
                       <div class="form__error">
                       <div>{{$errors->first('first_name')}}</div>
                       </div>
                       @endif</td>
                     </tr>
-                    <tr>
-                      <th>性別<strong>※</strong></th>
-                      <td>
-                        <input type="radio" name="gender" value="1" {{old('gender') == '1' ? 'checked' :''}} checked/> 男性
-                        <input type="radio" name="gender" value="2" {{old('gender') == '2' ? 'checked' :''}} /> 女性
-                        <input type="radio" name="gender" value="3" {{old('gender') == '3' ? 'checked' :''}} /> その他
+                    <tr class="form-table__row">
+                      <th class="form-table__title">性別<strong>※</strong></th>
+                      <td class="form-table__content">
+                        <input class="form-table__content-gender1" type="radio" name="gender" value="1" {{old('gender') == '1' ? 'checked' :''}} checked/> 男性
+                        <input class="form-table__content-gender" type="radio" name="gender" value="2" {{old('gender') == '2' ? 'checked' :''}} /> 女性
+                        <input class="form-table__content-gender" type="radio" name="gender" value="3" {{old('gender') == '3' ? 'checked' :''}} /> その他
                         @if($errors->has('gender'))
                         <div class="form__error">
                         <div>{{$errors->first('gender')}}</div>
@@ -39,9 +41,9 @@
                         @endif
                       </td>
                     </tr>
-                    <tr>
-                      <th>メールアドレス<strong>※</strong></th>
-                      <td><input class="" type="email" name="email" value="{{ old('email') }}" placeholder="例：test@example.com"/>
+                    <tr class="form-table__row">
+                      <th class="form-table__title">メールアドレス<strong>※</strong></th>
+                      <td class="form-table__content"><input class="form-table__content-email" type="email" name="email" value="{{ old('email') }}" placeholder="例：test@example.com"/>
                       @if($errors->has('email'))
                         <div class="form__error">
                         <div>{{$errors->first('email')}}</div>
@@ -49,12 +51,12 @@
                       @endif
                     </td>
                     </tr>
-                    <tr>
-                      <th>電話番号<strong>※</strong></th>
-                      <td>
-                      <input type="tel" name="tel1" size="3" maxlength="3" placeholder="080" value="{{ old('tel1') }}"/> -
-                      <input type="tel" name="tel2" size="4" maxlength="4" placeholder="1234" value="{{ old('tel2') }}"/> -
-                      <input type="tel" name="tel3" size="4" maxlength="4" placeholder="5678" value="{{ old('tel3') }}"/>
+                    <tr class="form-table__row">
+                      <th class="form-table__title">電話番号<strong>※</strong></th>
+                      <td class="form-table__content tel">
+                      <input class="form-table__content-tel" type="tel" name="tel1" size="3" maxlength="3" placeholder="080" value="{{ old('tel1') }}"/> -
+                      <input class="form-table__content-tel" type="tel" name="tel2" size="4" maxlength="4" placeholder="1234" value="{{ old('tel2') }}"/> -
+                      <input class="form-table__content-tel" type="tel" name="tel3" size="4" maxlength="4" placeholder="5678" value="{{ old('tel3') }}"/>
                       @if($errors->has('tel1'))
                         <div class="form__error">
                         <div>{{$errors->first('tel1')}}</div>
@@ -72,9 +74,9 @@
                       @endif
                       </td>
                     </tr>
-                    <tr>
-                      <th>住所<strong>※</strong></th>
-                      <td><input class="" type="text" name="address" value="{{ old('address') }}" placeholder="例：東京都渋谷区千駄ヶ谷1-2-3"/>
+                    <tr class="form-table__row">
+                      <th class="form-table__title">住所<strong>※</strong></th>
+                      <td class="form-table__content"><input class="form-table__content-address" type="text" name="address" value="{{ old('address') }}" placeholder="例：東京都渋谷区千駄ヶ谷1-2-3"/>
                       @if($errors->has('address'))
                         <div class="form__error">
                         <div>{{$errors->first('address')}}</div>
@@ -82,14 +84,14 @@
                       @endif
                       </td>
                     </tr>
-                    <tr>
-                      <th>建物名</th>
-                      <td><input class="" type="text" name="building" value="{{ old('building') }}" placeholder="例：千駄ヶ谷マンション101"/></td>
+                    <tr class="form-table__row">
+                      <th class="form-table__title">建物名</th>
+                      <td class="form-table__content"><input class="form-table__content-address" type="text" name="building" value="{{ old('building') }}" placeholder="例：千駄ヶ谷マンション101"/></td>
                     </tr>
-                    <tr>
-                      <th>お問い合わせの種類<strong>※</strong></th>
-                      <td>
-                      <select name="category_id">
+                    <tr class="form-table__row">
+                      <th class="form-table__title">お問い合わせの種類<strong>※</strong></th>
+                      <td class="form-table__content">
+                      <select class="form-table__content-category" name="category_id">
                       @if(old('category_id')=="")
                       <option value="">選択してください</option>
                       @foreach($categories as $category)
@@ -110,9 +112,9 @@
                       @endif
                       </td>
                     </tr>
-                    <tr>
-                      <th>お問い合わせ内容<strong>※</strong></th>
-                      <td><input class="" type="text" name="detail" value="{{ old('detail') }}" placeholder="お問い合わせ内容をご記載ください"/>
+                    <tr class="form-table__row">
+                      <th class="form-table__title">お問い合わせ内容<strong>※</strong></th>
+                      <td class="form-table__content"><input class="form-table__content-detail" type="text" name="detail" value="{{ old('detail') }}" placeholder="お問い合わせ内容をご記載ください"/>
                       @if($errors->has('detail'))
                         <div class="form__error">
                         <div>{{$errors->first('detail')}}</div>
@@ -123,8 +125,9 @@
                 </table>
                 </div>
                 
-                <div class="modal-footer">
-                    <button class="btn btn-danger">確認画面</button>
+                <div>
+                    <button class="confirm-button">確認画面</button>
+                </div>
                 </form>
 
 @endsection

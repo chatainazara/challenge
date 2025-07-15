@@ -27,7 +27,7 @@ class AdminController extends Controller
           'reset'=>$request->reset,
         ];
         $categories = Category::all();
-        $contacts = $searches -> paginate(5)->appends($request->all());
+        $contacts = $searches -> paginate(7)->appends($request->all());
         return view('auth.admin',[
           'contacts' => $contacts,
           'categories' => $categories,
@@ -39,7 +39,7 @@ class AdminController extends Controller
     // モーダルウィンドウから行う削除機能
     public function remove(Request $request)
     {
-      $a=$request->all();
+      // dd($request);
       Contact::find($request->id)->delete();
       return redirect('/admin');
     }

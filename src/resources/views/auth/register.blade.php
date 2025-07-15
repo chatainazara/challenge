@@ -5,14 +5,17 @@
 @endsection
 
 @section('link')
-    <a class="login__button-submit" href="/login">Login</a>
+<div class="header__link">
+  <a class="header-nav__button" href="/login">Login</a>
+</div>
+@endsection
+
+@section('pagetitle')
+    <h2 class="header__pagetitle">Register</h2>
 @endsection
 
 @section('content')
-<div class="register-form__content">
-  <div class="register-form__heading">
-    <h2>Register</h2>
-  </div>
+  <div class="register-form__content">
   <form class="form" action="/register" method="post" novalidate>
   @csrf
     <div class="form__group">
@@ -21,7 +24,7 @@
       </div>
       <div class="form__group-content">
         <div class="form__input--text">
-          <input type="text" name="name" value="{{ old('name') }}" />
+          <input type="text" name="name" value="{{ old('name') }}" placeholder="例：山田太郎"/>
         </div>
         @if($errors->has('name'))
         <div class="form__error">
@@ -36,7 +39,7 @@
       </div>
       <div class="form__group-content">
         <div class="form__input--text">
-          <input type="email" name="email" value="{{ old('email') }}" />
+          <input type="email" name="email" value="{{ old('email') }}" placeholder="例：test@example.com"/>
         </div>
         <div class="form__error">
         @if($errors->has('email'))
@@ -53,7 +56,7 @@
       </div>
       <div class="form__group-content">
         <div class="form__input--text">
-          <input type="password" name="password" />
+          <input type="password" name="password" placeholder="例：coachtech1106"/>
         </div>
         <div class="form__error">
         @if($errors->has('password'))
@@ -77,6 +80,5 @@
       <button class="form__button-submit" type="submit">登録</button>
     </div>
   </form>
-
 </div>
 @endsection
