@@ -41,7 +41,7 @@ Route::post('/admin',[AdminController::class, 'search']);
 Route::get('/csv-download', [CsvDownloadController::class, 'downloadCsv']);
 Route::post('/csv-download', [CsvDownloadController::class, 'downloadCsv']);
 
-Route::post('/remove',[AdminController::class, 'remove']);
+Route::post('/remove',[AdminController::class, 'remove'])->name('remove');
 
 Route::get('/',[ContactformController::class, 'contactform']);
 Route::post('/confirm',[ConfirmController::class, 'confirm']);
