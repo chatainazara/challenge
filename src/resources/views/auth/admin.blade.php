@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+
 @endsection
 
 
@@ -66,7 +67,7 @@
 </div>
 <!-- おわり -->
 
-<!-- 問い合わせ一覧 -->
+    <!-- 問い合わせ一覧 -->
     <table class="content-table">
       <tr class="content-table__header">
         <th class="content-table__header-text">名前</th>
@@ -83,12 +84,11 @@
         <td class="content-table__contents-text">{{$contact['category']['content']}}</td>
         <td >
           <!-- モーダルを開くボタン・リンク -->
-          <button onclick="modal{{$contact->id}}.showModal()" value="{{$contact->id}}"> 開く"{{$contact->id}}"</button>
+          <button class="modal-open__button" onclick="modal{{$contact->id}}.showModal()" value="{{$contact->id}}"> 詳細</button>
           <!-- modalボタン終わり -->
             <!-- モーダルウィンドウ -->
-            <dialog id="modal{{$contact->id}}">
-            <form><button onclick="modal.close()">close</button></form>
-              <p>{{$contact->id}}</p>
+            <dialog class="modal-dialog" id="modal{{$contact->id}}">
+            <form><button class="modal-close" onclick="modal.close()"> ✖️ </button></form>
               <table class="modal-table">
                 <tr class="modal-table__row">
                   <th class="modal-table__title">お名前</th>
@@ -125,7 +125,7 @@
                 </table>
                 <form action="/remove?id={{$contact->id}}" method="post">
                 @csrf
-                  <button>削除</button>
+                  <button class="modal-content__delete">削除</button>
                 </form>
             </dialog>
                 <!-- モーダルウィンドウ終わり -->
@@ -133,6 +133,7 @@
       </tr>
       @endforeach
     </table>
+    <!-- お問い合わせ一覧終わり -->
   </div>
 @endsection
 @endif

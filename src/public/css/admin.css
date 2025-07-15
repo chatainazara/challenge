@@ -1,13 +1,12 @@
 .search{
-    /* border: 1px solid #E3DED9; */
     display:flex;
-    /* justify-content: space-around; */
     vertical-align:top;
     align-items: stretch;
     height: 50px;
     width: 1183px;
     margin:0 auto;
 }
+
 .search__name{
     flex-grow: 2;
     display: inline-block;
@@ -22,6 +21,7 @@
     font-size: 16px;
     color: #8B7969;
     vertical-align: top;
+    text-align: center;
 }
 
 .search__gender{
@@ -40,26 +40,7 @@
     margin-left: 10px;
     border-radius: 0;
     vertical-align: top;
-}
-
-.search__gender::after {
-    display: inline-block;
-    position: absolute;
-    top: 18px;
-    /*矢印の上からの位置*/
-    right: 20px;
-    /*矢印の右からの位置*/
-    content: '';
-    width: 15px;
-    /*矢印の横幅*/
-    height: 10px;
-    /*矢印の縦幅*/
-    clip-path: polygon(0 0, 100% 0, 50% 100%);
-    /*逆三角形の描画*/
-    background-color: #5cc0b5;
-    /*矢印の色*/
-    pointer-events: none;
-    /*矢印部分をクリックできるようにする*/ 
+    text-align: center;
 }
 
 .search__category{
@@ -78,6 +59,7 @@
     margin-left: 10px;
     border-radius: 0;
     vertical-align: top;
+    text-align: center;
     }
 
 .search__date{
@@ -96,6 +78,7 @@
     border-radius: 0;
     vertical-align: top;
     margin-left: 10px;
+    text-align: center;
 }
 .search__button{
     display: inline-block;
@@ -115,6 +98,7 @@
     color: #ffffff;
     vertical-align: top;
     margin-left: 10px;
+    text-align: center;
 }
 .search__reset{
     display: inline-block;
@@ -134,7 +118,9 @@
     color: #ffffff;
     vertical-align: top;
     margin-left: 10px;
+    text-align: center;
 }
+
 .utility{
     display:flex;
     justify-content: space-between;
@@ -142,7 +128,9 @@
     width:1183px;
     margin:40px auto 40px;
 }
-.utility__export{}
+.utility__export{
+    background: none;
+}
 
 .utility__export-button{
     padding: 0;
@@ -153,7 +141,6 @@
     background: none;
     width:148px;
     height:39px;
-    /* border:1px solid #8B7969; */
     font-family: "Inika", serif;
     font-weight: 400;
     font-style: normal;
@@ -161,37 +148,12 @@
     color:#8B7969;
     vertical-align: top;
     background: #E1DBD6;
+    text-align: center;
 }
 
-/* ページネーション */
 .utility__pagenation{
+    background:none;
 }
-
-ul.pagination{
-
-}
-
-.page-link{
-    color: #8B7969;
-    font-family: "Inika", serif;
-    font-weight: 400;
-}
-
-span.page-link {
-    color: #ffffff;
-    background-color: #8B7969 !important;
-    border:none;
-}
-
-li.page-item.active {
-    background-color: none;
-}
-
-
-.page-item {
-    background-color: #ffffff;
-}
-/* ページネーション終わり */
 
 .content{
     width:100%;
@@ -205,7 +167,6 @@ li.page-item.active {
     width: 100%;
     height:59px;
     background:#8B7969;
-    text-align:center;
     color:white;
 }
 .content-table__header-text{
@@ -213,6 +174,8 @@ li.page-item.active {
     font-weight: 700;
     font-style: bold;
     font-size: 20px;
+    text-align:center;
+    vertical-align: middle;
 }
 .content-table__contents{
     width: 100%;
@@ -228,9 +191,13 @@ li.page-item.active {
     font-style: normal;
     font-size: 20px;
     color:#8B7969;
+    text-align:center;
+    vertical-align: middle;
 }
 
-.content-table__contents-button{
+/* モーダルウィンドウ */
+
+.modal-open__button{
     display: block;
     padding: 0;
     border: none;
@@ -246,62 +213,38 @@ li.page-item.active {
     font-style: Regular;
     font-size: 18px;
     color: #D9C6B5;
-    margin-top:5px;
-}
-
-.modal.fade {
-    /* border: 1px solid #d900ff;
-    width: 805px !important;
-    height: 858px !important; */
+    margin-top:17px;
 }
 
 .modal-dialog {
-    /* border: 4px solid #00b3ff;
-    width: 805px !important;
-    height: 858px !important; */
+    border: 1px solid #8B7969;
+    width: 805px ;
+    height: 858px ;
     text-align: center;
     margin: 0 auto;
 }
 
-.modal-contents {
-    /* border: 1px solid blue !important; */
-    background: white;
-    width: 805px !important;
-    height: 858px !important;
-    /* border: 1px solid #d900ff; */
-}
-
-.modal-title {
-    border: 5px solid #00ff2a;
-}
-
-.modal-header {
-    border: none !important;
-}
-
-.modal-contents__close {
+.modal-close {
     background: none;
     padding: 0;
     border: none;
     outline: none;
     font: inherit;
     color: inherit;
-    margin: 10px 10px 10px auto;
-    /* border: 1px solid blue !important; */
-
+    font-size: 50px;
+    position:relative;
+    right:-300px;
+    margin: 10px 10px 50px auto;
 }
 
 .modal-table {
-    margin-top: 100px;
-    /* border: 1px solid #D9C6B5; */
     margin: 10px auto;
 }
 
 .modal-table__row {
     width: 100%;
     margin: 10px auto;
-    height: 60px !important;
-    /* border: 1px solid rgb(255, 255, 255) !important; */
+    height: 60px ;
 }
 
 .modal-table__title {
@@ -323,8 +266,7 @@ li.page-item.active {
 }
 
 .modal-footer {
-    /* text-align: center; */
-    border: none !important;
+    border: none;
     margin: 0px auto;
     /* border: 1px solid #D9C6B5; */
 }
@@ -345,11 +287,70 @@ li.page-item.active {
     text-align: center;
     border: 1px solid #D9C6B5;
     position: relative;
-    left:-352px;
     top:150px;
 }
 
-dialog{
-    width:200px;
-    height:300px;
+/* ページネーション */
+
+/* .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.pagination a {
+    padding: 8px 16px;
+    margin: 0 0px;
+    border: 1px solid #ddd;
+    border-radius: 0px;
+    color: #333;
+    text-decoration: none;
+}
+.pagination .active {
+    background-color: #D9C6B599;
+    color: white;
+    border: 1px solid #D9C6B599;
+    padding: 8px 16px;
+    margin: 0 0px;
+    border-radius: 0px;
+    line-height: 100%;
+}
+
+.pagination .disabled {
+    color:#F4F4F44D;
+    padding: 8px 16px;
+    margin: 0 0px;
+    border: 1px solid #ddd;
+    border-radius: 0px;
+} */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 8px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.pagination a {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2em;
+    height: 2em;
+    border: 1px solid #7a4a00;
+    border-radius: 1px;
+    color: #7a4a00;
+}
+
+.pagination a:not(:hover) {
+    text-decoration: none;
+}
+
+.pagination .current a {
+    background-color: #7a4a00;
+    color: #fff;
+    pointer-events: none;
 }

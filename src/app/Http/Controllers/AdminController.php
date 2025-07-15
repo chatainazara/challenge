@@ -39,7 +39,6 @@ class AdminController extends Controller
     // モーダルウィンドウから行う削除機能
     public function remove(Request $request)
     {
-      // dd($request);
       Contact::find($request->id)->delete();
       return redirect('/admin');
     }

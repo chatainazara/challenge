@@ -1,23 +1,18 @@
 /* ヘッダーなどの全ページ共通部分 */
 main{
     width:1183;
-    /* border: 1px solid #8B7969; */
     margin:0 auto;
 }
 
 .header {
-    /* display:inline-block; */
     background:none;
     text-align: center;
     width: 1183px;
-    /* width:70%; */
     margin:0 auto;
-    /* border: 1px solid #8B7969; */
 }
 
 .header__inner {
     background: #fbfbfb;
-    /* width: 70%; */
     height: 100px;
     border: 1px solid #8B7969;
     text-align: center;
@@ -38,22 +33,7 @@ main{
     font-size:40px;
     color:#8B7969;
     margin: 15px auto;
-    /* border: 1px solid #8B7969; */
 }
-
-/* 
-.header-utilities nav {
-    width: 18%;
-} */
-
-/* .header-nav {
-    font-family: "Inika", serif;
-        font-weight: 400;
-        font-style: normal;
-        font-size: 40px;
-        text-align: center;
-        color: #8B7969;
-} */
 
 .header__link {
     color: #F0F0F0 60%;
@@ -82,6 +62,7 @@ main{
     text-align: center;
     color: #D9C6B5;
     appearance: none;
+    vertical-align: bottom;
 }
 
 .header__pagetitle {
@@ -92,6 +73,4 @@ main{
     font-size: 35px;
     color: #8B7969;
     margin: 40px auto;
-    /* position:relative;
-    top:140px; */
 }

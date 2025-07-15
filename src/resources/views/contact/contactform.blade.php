@@ -16,12 +16,13 @@
                       <th class="form-table__title">お名前<strong>※</strong></th>
                       <td class="form-table__content">
                       <input class="form-table__content-lastname" type="text" name="last_name" value="{{ old('last_name') }}" placeholder="例：山田"/>
+                    
+                      <input class="form-table__content-firstname" type="text" name="first_name" value="{{ old('first_name') }}"placeholder="例：太郎"/>
                       @if($errors->has('last_name'))
                       <div class="form__error">
                       <div>{{$errors->first('last_name')}}</div>
                       </div>
                       @endif
-                      <input class="form-table__content-firstname" type="text" name="first_name" value="{{ old('first_name') }}"placeholder="例：太郎"/>
                       @if($errors->has('first_name'))
                       <div class="form__error">
                       <div>{{$errors->first('first_name')}}</div>

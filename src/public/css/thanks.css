@@ -1,6 +1,4 @@
 .content{
-    /* display:block;
-    margin-top:600px; */
     position: absolute;
     top:  50%;
     left: 50%;
@@ -22,7 +20,7 @@
     font-weight: 400;
     font-style: normal;
     font-size: 20px;
-    color: #ffffff !important;
+    color: #ffffff ;
     margin: 0px auto;
     text-align: center;
     line-height:46px;
@@ -31,33 +29,21 @@
 .thank {
     position: relative;
     display: flex;
-    /* フレックスボックスを有効化 */
     justify-content: center;
-    /* 水平方向の中央寄せ */
     align-items: center;
-    /* 垂直方向の中央寄せ */
-    font-size: 20px;
-    /* 通常テキスト用のフォントサイズ */
+    font-size: 30px;
     color: #000;
-    /* 通常テキストの色 */
     margin: 50px 0;
-    /* 上下に50pxのマージンを設定 */
 }
 
 .thank::after {
     content: 'Thank you';
     position: absolute;
     top: 50%;
-    /* 垂直方向の中央寄せ */
     left: 50%;
-    /* 水平方向の中央寄せ */
     transform: translate(-50%, -50%);
-    /* 中央に配置 */
     font-size: 280px;
-    /* 背景テキストのフォントサイズ */
     color: rgba(209, 201, 173, 0.3);
-    /* 背景テキストの色（透明度含む） */
     z-index: -1;
-    /* 背景として配置 */
     white-space: nowrap;
-    /* テキストの折り返し防止 */ }
+ }
