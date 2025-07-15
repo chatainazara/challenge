@@ -5,4 +5,4 @@
 
 
 
-<img width="150" src="img.challenge.drawio.svg">
+[<img width="150" src="img.challenge.drawio.svg">](https://github.com/chatainazara/challenge/issues/9#issue-3230781263)
