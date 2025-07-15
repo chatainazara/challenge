@@ -65,14 +65,8 @@
 </div>
 </div>
 <!-- おわり -->
-<!-- <button onclick="modal.showModal()">open</button>
-    <dialog id="modal">
-      <p>Hello</p>
-      <form method="dialog">
-        <></>
-      </form>
-    </dialog> -->
-<!-- 一覧 -->
+
+<!-- 問い合わせ一覧 -->
     <table class="content-table">
       <tr class="content-table__header">
         <th class="content-table__header-text">名前</th>
@@ -81,7 +75,6 @@
         <th class="content-table__header-text">お問い合わせの種類</th>
         <th class="content-table__header-text"></th>
       </tr>
-
       @foreach($contacts as $contact)
       <tr class="content-table__contents">
         <td class="content-table__contents-text">{{$contact['last_name']}} {{$contact['first_name']}}</td>
@@ -89,96 +82,57 @@
         <td class="content-table__contents-text">{{$contact['email']}}</td>
         <td class="content-table__contents-text">{{$contact['category']['content']}}</td>
         <td >
-        <!-- <form action="/remove?id={{$contact->id}}" method="post">
-                  @csrf
-                    <button class="modal-content__delete" type=submit>削除</button>
-                </form> -->
-
-      <!-- モーダルを開くボタン・リンク -->
-                <button type="button" class="content-table__contents-button" data-toggle="modal" data-id="{{ $contact->id }}" data-target="#editModal{{ $contact->id }}">詳細</button>
-
-                <!-- <button type="button" class="btn btn-primary mb-8" data-toggle="modal"  data-id="{{ $contact->id }}" data-target="#editModal{{ $contact->id }}">ボタンで開く</button> -->
-
-    <!-- modalボタン終わり -->
-
-
-<!-- ボタン・リンククリック後に表示される画面の内容 -->
-    <div class="modal fade" id="editModal{{ $contact->id }}" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-    <!-- data-backdrop="static" :上記に加えると固定ウィンドウになる-->
-      <div class="modal-dialog">
-        <div class="modal-contents">
-            <!-- <h4 class="modal-title" id="myModalLabel"></h4> -->
-          <div class="modal-header">
-            <button class="modal-contents__close" type="button" class="modal-close" data-dismiss="modal">✖️</button>
-          </div>
-            <!-- <div class="modal-header"> -->
-            <div class="modal-body">
-                  <table class="modal-table">
-                    <tr class="modal-table__row">
-                      <th class="modal-table__title">お名前</th>
-                      <td class="modal-table__content">{{$contact['last_name']}} {{$contact['first_name']}}</td>
-                    </tr>
-                    <tr class="modal-table__row">
-                      <th class="modal-table__title">性別</th>
-                      <td class="modal-table__content">{{$contact['gender']}}</td>
-                    </tr>
-                    <tr class="modal-table__row">
-                      <th class="modal-table__title">メールアドレス</th>
-                      <td class="modal-table__content">{{$contact['email']}}</td>
-                    </tr>
-                    <tr class="modal-table__row">
-                      <th class="modal-table__title">電話番号</th>
-                      <td class="modal-table__content">{{$contact['tel']}}</td>
-                    </tr>
-                    <tr class="modal-table__row">
-                      <th class="modal-table__title">住所</th>
-                      <td class="modal-table__content">{{$contact['address']}}</td>
-                    </tr>
-                    <tr class="modal-table__row">
-                      <th class="modal-table__title">建物名</th>
-                      <td class="modal-table__content">{{$contact['building']}}</td>
-                    </tr>
-                    <tr class="modal-table__row">
-                      <th class="modal-table__title">お問い合わせの種類</th>
-                      <td class="modal-table__content">{{$contact['category']['content']}}</td>
-                    </tr>
-                    <tr class="modal-table__row">
-                      <th class="modal-table__title">お問い合わせ内容</th>
-                      <td class="modal-table__content">{{$contact['detail']}}</td>
-                    </tr>
-                  </table>
-
-                <div class="modal-footer">
-                <form action="/remove?id={{$contact->id}}" method="get">
-                  <button id="test1" type="button" class="modal-content__delete" data-target="#deleteModal" onclick="location.href='/remove'">削除</button>
-                  <!-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-title="{{ $contact->id }}" data-url="/remove">削除</button> -->
-                </form>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-<!-- modalウィンドウ終わり -->
-                </td>
+          <!-- モーダルを開くボタン・リンク -->
+          <button onclick="modal{{$contact->id}}.showModal()" value="{{$contact->id}}"> 開く"{{$contact->id}}"</button>
+          <!-- modalボタン終わり -->
+            <!-- モーダルウィンドウ -->
+            <dialog id="modal{{$contact->id}}">
+            <form><button onclick="modal.close()">close</button></form>
+              <p>{{$contact->id}}</p>
+              <table class="modal-table">
+                <tr class="modal-table__row">
+                  <th class="modal-table__title">お名前</th>
+                  <td class="modal-table__content">{{$contact['last_name']}} {{$contact['first_name']}}</td>
                 </tr>
+                <tr class="modal-table__row">
+                  <th class="modal-table__title">性別</th>
+                  <td class="modal-table__content">{{$contact['gender']}}</td>
+                </tr>
+                <tr class="modal-table__row">
+                  <th class="modal-table__title">メールアドレス</th>
+                  <td class="modal-table__content">{{$contact['email']}}</td>
+                </tr>
+                <tr class="modal-table__row">
+                  <th class="modal-table__title">電話番号</th>
+                  <td class="modal-table__content">{{$contact['tel']}}</td>
+                </tr>
+                <tr class="modal-table__row">
+                  <th class="modal-table__title">住所</th>
+                  <td class="modal-table__content">{{$contact['address']}}</td>
+                </tr>
+                <tr class="modal-table__row">
+                  <th class="modal-table__title">建物名</th>
+                  <td class="modal-table__content">{{$contact['building']}}</td>
+                </tr>
+                <tr class="modal-table__row">
+                  <th class="modal-table__title">お問い合わせの種類</th>
+                  <td class="modal-table__content">{{$contact['category']['content']}}</td>
+                </tr>
+                <tr class="modal-table__row">
+                  <th class="modal-table__title">お問い合わせ内容</th>
+                  <td class="modal-table__content">{{$contact['detail']}}</td>
+                </tr>
+                </table>
+                <form action="/remove?id={{$contact->id}}" method="post">
+                @csrf
+                  <button>削除</button>
+                </form>
+            </dialog>
+                <!-- モーダルウィンドウ終わり -->
+        </td>
+      </tr>
       @endforeach
-
     </table>
   </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script>
-const BUTTON_CLICK_EVENT= document.getElementById('test1');
-BUTTON_CLICK_EVENT.addEventListener('click', () => {
-    //クリックイベント
-});
-　　　</script>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 @endsection
 @endif
