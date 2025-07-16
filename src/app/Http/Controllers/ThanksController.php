@@ -9,7 +9,6 @@ use App\Models\Contact;
 class ThanksController extends Controller
 {
     public function thanksOrfix(Request $request){
-        // dd($request->all());
         if($request->has('fix')){
             return redirect('/')->withInput();
         }else{

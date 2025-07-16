@@ -13,6 +13,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap" rel="stylesheet">
   <!-- 読み込みフォント終わり -->
+  <!-- 読み込みcss -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@3.0.2/destyle.min.css">
+  <!-- 読み込みcss終わり -->
   @yield('css')
 </head>
 

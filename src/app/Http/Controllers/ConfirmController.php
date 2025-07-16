@@ -20,11 +20,7 @@ class ConfirmController extends Controller
         }else{
             $gender_name='その他';
         }
-        // dd($gender);
-        // $s=$contact['category_id'];
-        // dd($s);
         $category=Category::find($contact['category_id']);
-        // dd($category);
         return view('contact.confirm',compact('contact','category','gender_name'));
     }
 }
